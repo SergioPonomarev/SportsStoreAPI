@@ -176,6 +176,15 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\Custom\storeAdminController.js" />
+    <Content Include="Scripts\Custom\storeAdminModel.js" />
+    <Content Include="Scripts\Custom\storeAjax.js" />
+    <Content Include="Scripts\Custom\storeCommonController.js" />
+    <Content Include="Scripts\Custom\storeCustomerController.js" />
+    <Content Include="Scripts\Custom\storeCustomerModel.js" />
+    <Content Include="Scripts\Custom\storeModel.js" />
+    <Content Include="Scripts\Custom\storeOrdersController.js" />
+    <Content Include="Scripts\Custom\storeProductsController.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -199,6 +208,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
