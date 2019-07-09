@@ -221,6 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomResolver.cs" />
     <Compile Include="Infrastructure\Identity\StoreAuthProvider.cs" />
     <Compile Include="Infrastructure\Identity\StoreIdentityDbContext.cs" />
     <Compile Include="Infrastructure\Identity\StoreIdentityDbInitializer.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportsStoreAPI.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -21,6 +22,8 @@ namespace SportsStoreAPI
             );
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            config.DependencyResolver = new CustomResolver();
         }
     }
 }
