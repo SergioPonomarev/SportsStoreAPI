@@ -3,75 +3,40 @@
     ViewBag.Title = "Index";
 }
 
-<div class="alert alert-danger" data-bind="visible: model.gotError(), text: model.error()"></div>
-
-<div class="card text-primary">
-    <div class="card-header">Authentication</div>
-    <table class="table table-striped">
-        <tr>
-            <td>Authenticated:</td>
-            <td data-bind="text: model.authenticated()"></td>
-        </tr>
-        <tr>
-            <td>User:</td>
-            <td data-bind="text: model.username()"></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button data-bind="click: testAuth">Authenticate</button>
-            </td>
-        </tr>
-    </table>
+<div class="navbar bg-dark" role="navigation">
+    <a class="navbar-brand" href="#">SPORTS STORE</a>
+    @Html.Partial("CartWidget")
 </div>
 
-<div class="card text-primary">
-    <div class="card-header">Product Controller Functions</div>
-    <table class="table table-striped">
-        <tr>
-            <td><button data-bind="click: getProducts">Get Products</button></td>
-            <td><button data-bind="click: testDeleteProduct">Delete Product</button></td>
-            <td><button data-bind="click: testChangeProduct">Change Product</button></td>
-        </tr>
-    </table>
-</div>
+<div class="row">
+    <div id="categories" class="col-4">
+        <button class="btn btn-block btn-lg" data-bind="click: setCategory.bind(null), css: {'btn-primary': $data == customerModel.selectedCategory()}">
+            Home
+        </button>
+        <div data-bind="foreach: customerModel.productCategories()">
+            <button class="btn btn-block btn-primary btn-lg" data-bind="click: setCategory.bind($data), text: $data, css: {'btn-primary': $data == customerModel.selectedCategory()}"></button>
+        </div>
+    </div>
 
-<div class="card text-primary">
-    <div class="card-header">Order Controller Functions</div>
-    <table class="table table-striped">
-        <tr>
-            <td><button data-bind="click: getOrders">Get Orders</button></td>
-            <td><button data-bind="click: testDeleteOrder">Delete Order</button></td>
-            <td><button data-bind="click: testSaveOrder">Save Order</button></td>
-        </tr>
-    </table>
+    <div class="alert alert-danger col-8" data-bind="visible: model.gotError(), text: model.error()"></div>
+
+    <div class="col-8">
+        <div data-bind="visible: customerModel.currentView() == 'list'">
+            @Html.Partial("ProductList")
+        </div>
+        <div class="row card" data-bind="visible: customerModel.currentView() == 'cart'">
+            @Html.Partial("ProductCart")
+        </div>
+        <div class="row card" data-bind="visible: customerModel.currentView() == 'checkout'">
+            @Html.Partial("Checkout")
+        </div>
+        <div class="row card" data-bind="visible: customerModel.currentView() == 'thankyou'">
+            @Html.Partial("ThankYou")
+        </div>
+    </div>
 </div>
 
 @section scripts {
-    <script>
-        var testAuth = function () {
-            model.username('Admin');
-            model.password('secret');
-            authenticate();
-        }
-
-        var testDeleteProduct = function () {
-            deleteProduct(2);
-        }
-
-        var testChangeProduct = function () {
-            var product = model.products()[2];
-            product.Price = product.Price + 10;
-            saveProduct(product);
-        }
-
-        var testDeleteOrder = function () {
-            deleteOrder(1);
-        }
-
-        var testSaveOrder = function () {
-            var order = model.orders()[0];
-            order.TotalPrice = order.TotalPrice + 10;
-            saveOrder(order);
-        }
-    </script>
+    <script src="~/Scripts/Custom/storeCustomerModel.js"></script>
+    <script src="~/Scripts/Custom/storeCustomerController.js"></script>
 }
