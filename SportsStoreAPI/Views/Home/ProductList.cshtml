@@ -1,1 +1,12 @@
-﻿ProductList View
+﻿<div data-bind="foreach: customerModel.filteredProducts()">
+    <div class="card bg-light">
+        <h3>
+            <strong data-bind="text: $data.Name"></strong>
+            <span class="float-right badge badge-primary" data-bind="text: ('$' + $data.Price.toFixed(2))"></span>
+        </h3>
+        <span class="lead" data-bind="text: $data.Description"></span>
+        <div class="float-right">
+            <button class="btn btn-success" data-bind="click: addToCart">Add to Cart</button>
+        </div>
+    </div>
+</div>
