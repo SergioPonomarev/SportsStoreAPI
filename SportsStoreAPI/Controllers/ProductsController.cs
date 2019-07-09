@@ -36,6 +36,7 @@ namespace SportsStoreAPI.Controllers
                 : Ok(result);
         }
 
+        [Authorize(Roles = "Administrators")]
         public async Task<IHttpActionResult> PostProduct(Product product)
         {
             if (ModelState.IsValid)
