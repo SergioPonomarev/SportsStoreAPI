@@ -1,3 +1,6 @@
 ﻿<div class="navbar-text ml-auto text-light">
-    CartWidget View
+    <b>Your cart:</b>
+    <span data-bind="text: customerModel.cartCount()"></span> item(s)
+    <span data-bind="text: '$' + customerModel.cartTotal().toFixed(2)"></span>
+    <button class="btn btn-primary" data-bind="click: setView.bind($data, 'checkout'), enable: customerModel.cartCount() > 0">Checkout</button>
 </div>
